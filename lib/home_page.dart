@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
-
-  const HomePage({ Key? key}) : super(key: key);
+  const HomePage({Key? key}) : super(key: key);
 
   @override
   State<HomePage> createState() => _HomePageState();
@@ -11,13 +10,13 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   int pessoas = 0;
 
-  aumentarPessoas(){
+  aumentarPessoas() {
     setState(() {
       pessoas++;
     });
   }
 
-  diminuirPessoas(){
+  diminuirPessoas() {
     setState(() {
       pessoas--;
     });
@@ -38,23 +37,44 @@ class _HomePageState extends State<HomePage> {
                 color: Colors.white,
               ),
             ),
-            Text(
-              pessoas.toString(),
-              style: const TextStyle(
-                fontSize: 100,
-                color: Colors.white,
+            Padding(
+              padding: const EdgeInsets.all(32.0),
+              child: Text(
+                pessoas.toString(),
+                style: const TextStyle(
+                  fontSize: 100,
+                  color: Colors.white,
+                ),
               ),
             ),
             Row(
-              mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 TextButton(
+                  style: TextButton.styleFrom(
+                    backgroundColor: Colors.white,
+                    fixedSize: const Size(80, 80),
+                    primary: Colors.black,
+                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16),),
+                  ),
                   onPressed: diminuirPessoas,
-                  child: const Text("-1"),
+                  child: const Text(
+                    "-1",
+                    style: TextStyle(color: Colors.black, fontSize: 16,),
+                  ),
                 ),
                 TextButton(
+                  style: TextButton.styleFrom(
+                    backgroundColor: Colors.white,
+                    fixedSize: const Size(80, 80),
+                    primary: Colors.black,
+                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16),),
+                  ),
                   onPressed: aumentarPessoas,
-                  child: const Text("+1"),
+                  child: const Text(
+                    "+1",
+                    style: TextStyle(color: Colors.black, fontSize: 16,),
+                  ),
                 ),
               ],
             ),
