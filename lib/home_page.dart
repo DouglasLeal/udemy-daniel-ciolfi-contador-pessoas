@@ -10,17 +10,15 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   int pessoas = 0;
 
-  aumentarPessoas() {
+  controlePessoas(int valor) {
     setState(() {
-      pessoas++;
+      pessoas += valor;
     });
   }
 
-  diminuirPessoas() {
-    setState(() {
-      pessoas--;
-    });
-  }
+  bool get estaVazio => pessoas == 0;
+
+  bool get estaCheio => pessoas == 20;
 
   @override
   Widget build(BuildContext context) {
@@ -29,18 +27,17 @@ class _HomePageState extends State<HomePage> {
       body: Container(
         decoration: const BoxDecoration(
           image: DecorationImage(
-            image: AssetImage('assets/images/background.jpg'),
-            fit: BoxFit.cover
-          ),
+              image: AssetImage('assets/images/background.jpg'),
+              fit: BoxFit.cover),
         ),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const Text(
-              "Pode Entrar!",
+            Text(
+              estaCheio ? "Lotado!" : "Pode Entrar!",
               style: TextStyle(
                 fontSize: 32,
-                color: Colors.white,
+                color: estaCheio ? Colors.red : Colors.white,
               ),
             ),
             Padding(
@@ -58,14 +55,18 @@ class _HomePageState extends State<HomePage> {
               children: [
                 TextButton(
                   style: TextButton.styleFrom(
-                    backgroundColor: Colors.white,
+                    backgroundColor: estaVazio
+                        ? Colors.white.withOpacity(0.2)
+                        : Colors.white,
                     fixedSize: const Size(80, 80),
                     primary: Colors.black,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(16),
                     ),
                   ),
-                  onPressed: diminuirPessoas,
+                  onPressed: () {
+                    estaVazio ? null : controlePessoas(-1);
+                  },
                   child: const Text(
                     "-1",
                     style: TextStyle(
@@ -76,14 +77,18 @@ class _HomePageState extends State<HomePage> {
                 ),
                 TextButton(
                   style: TextButton.styleFrom(
-                    backgroundColor: Colors.white,
+                    backgroundColor: estaCheio
+                        ? Colors.white.withOpacity(0.2)
+                        : Colors.white,
                     fixedSize: const Size(80, 80),
                     primary: Colors.black,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(16),
                     ),
                   ),
-                  onPressed: aumentarPessoas,
+                  onPressed: () {
+                    estaCheio ? null : controlePessoas(1);
+                  },
                   child: const Text(
                     "+1",
                     style: TextStyle(
