@@ -27,6 +27,12 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       backgroundColor: Colors.black,
       body: Container(
+        decoration: const BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage('assets/images/background.jpg'),
+            fit: BoxFit.cover
+          ),
+        ),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -55,12 +61,17 @@ class _HomePageState extends State<HomePage> {
                     backgroundColor: Colors.white,
                     fixedSize: const Size(80, 80),
                     primary: Colors.black,
-                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16),),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(16),
+                    ),
                   ),
                   onPressed: diminuirPessoas,
                   child: const Text(
                     "-1",
-                    style: TextStyle(color: Colors.black, fontSize: 16,),
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 16,
+                    ),
                   ),
                 ),
                 TextButton(
@@ -68,12 +79,17 @@ class _HomePageState extends State<HomePage> {
                     backgroundColor: Colors.white,
                     fixedSize: const Size(80, 80),
                     primary: Colors.black,
-                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16),),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(16),
+                    ),
                   ),
                   onPressed: aumentarPessoas,
                   child: const Text(
                     "+1",
-                    style: TextStyle(color: Colors.black, fontSize: 16,),
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 16,
+                    ),
                   ),
                 ),
               ],
